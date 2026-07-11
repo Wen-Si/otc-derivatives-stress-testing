@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-base text-t1;
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  /* 滚动条样式 */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-line-soft rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-line-strong;
+  }
+
+  /* 输入框聚焦样式 */
+  input:focus,
+  textarea:focus {
+    outline: none;
+  }
+
+  /* 选中文本样式 */
+  ::selection {
+    @apply bg-gold/30 text-t1;
+  }
+}
+
+@layer components {
+  /* 卡片容器 */
+  .card {
+    @apply bg-surface border border-line rounded-lg;
+  }
+
+  .card-elevated {
+    @apply bg-elevated border border-line rounded-lg;
+  }
+
+  /* 主按钮 - 金色 */
+  .btn-primary {
+    @apply bg-gold text-base font-medium px-4 py-2 rounded-md
+           hover:bg-gold-light transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed
+           flex items-center justify-center gap-2;
+  }
+
+  /* 次要按钮 */
+  .btn-secondary {
+    @apply bg-elevated text-t2 border border-line-soft font-medium px-4 py-2 rounded-md
+           hover:bg-hover hover:text-t1 hover:border-line-strong transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed
+           flex items-center justify-center gap-2;
+  }
+
+  /* 幽灵按钮 */
+  .btn-ghost {
+    @apply text-t2 px-3 py-1.5 rounded-md
+           hover:bg-hover hover:text-t1 transition-all duration-200
+           flex items-center justify-center gap-2;
+  }
+
+  /* 标签 */
+  .tag {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border;
+  }
+
+  .tag-call {
+    @apply text-success border-success/40 bg-success/10;
+  }
+
+  .tag-put {
+    @apply text-danger border-danger/40 bg-danger/10;
+  }
+
+  .tag-long {
+    @apply text-cyan-glow border-cyan-glow/40 bg-cyan-glow/10;
+  }
+
+  .tag-short {
+    @apply text-warning border-warning/40 bg-warning/10;
+  }
+
+  /* 数字显示 */
+  .num {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* 数据网格线 */
+  .grid-line {
+    @apply border-b border-line;
+  }
+
+  /* 表头 */
+  .table-header {
+    @apply text-t3 text-xs font-medium uppercase tracking-wider;
+  }
+
+  /* 分割线带文字 */
+  .divider-text {
+    @apply flex items-center gap-3 text-t3 text-xs uppercase tracking-wider;
+  }
+
+  .divider-text::before,
+  .divider-text::after {
+    content: '';
+    @apply flex-1 h-px bg-line;
+  }
+}
+
+@layer utilities {
+  /* 渐变背景 */
+  .bg-gradient-surface {
+    background: linear-gradient(180deg, #0d1420 0%, #0a0f1a 100%);
+  }
+
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, #f0b90b 0%, #c99700 100%);
+  }
+
+  /* 文字渐变 */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #fcd535 0%, #f0b90b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* 微光发光效果 */
+  .glow-gold {
+    box-shadow: 0 0 24px rgba(240, 185, 11, 0.12);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 24px rgba(0, 212, 255, 0.12);
+  }
+}
